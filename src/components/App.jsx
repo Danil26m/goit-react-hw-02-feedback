@@ -5,47 +5,41 @@ import FeedbackOptions from "./FeedbackOptions/FeedbackOptions";
 import Notification from "./Notification";
 import "./style.css";
   class App extends Component{
-    state = {
-      good: 0,
-      neutral: 0,
-      bad: 0
-    }
-    total ={
-    }
     constructor(){
       super();
+      this.state = {
+        good: 0,
+        neutral: 0,
+        bad: 0,
+      }
       this.addGod = this.addGod.bind(this);
       this.addNeutral = this.addNeutral.bind(this);
       this.addBad = this.addBad.bind(this);
     }
     addGod(){
-      this.state.good ++;
       this.setState({
-        good: this.state.good 
+        good: this.state.good +=1,
       }) 
+  
     }
     addNeutral(){
-      this.state.neutral ++;
       this.setState({
-        neutral: this.state.neutral   
+        neutral:  this.state.neutral +=1 ,  
       })
     }
     addBad(){
-      this.state.bad ++;
       this.setState({
-        bad: this.state.bad 
-        
+        bad: this.state.bad +=1,
       })
     }
     countTotalFeedback(){
         return this.state.good + this.state.neutral + this.state.bad;
       }
     countPositiveFeedbackPercentage(){
-      const positive = Math. round((this.state.good / this.countTotalFeedback()) * 100) 
+      const positive = Math.round((this.state.good / this.countTotalFeedback()) * 100) 
       return positive;
       }
       render(){
-      
       const{good,neutral,bad} = this.state;
       const feedback = [this.addGod,this.addNeutral,this.addBad];
       return ( 
